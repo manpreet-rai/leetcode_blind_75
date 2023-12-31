@@ -1,12 +1,22 @@
+// Basic IO
 #include <iostream>
+#include <bitset>
+
+// Containers
+#include <set>
 #include <vector>
 #include <unordered_map>
 #include <unordered_set>
+
+// Libraries
 #include <algorithm>
-#include <set>
+
+// Additional
+#include <cstdint>
 
 using namespace std;
 
+/// Arrays
 
 /**
  * Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
@@ -309,6 +319,96 @@ int maxArea(vector<int>& height) {
     return max_area;
 }
 
+/// Binary (Bit Manipulation)
+
+/**
+ * Given two integers a and b, return the sum of the two integers without using the operators + and -.
+ * Time complexity: O(1) or O(N), N is max number of bits in any number.
+ * Space complexity: O(1).
+ * @see https://leetcode.com/problems/sum-of-two-integers
+ * @param a
+ * @param b
+ * @return sum
+ */
+int getSum(int a, int b) {
+    return b == 0 ? a : getSum(a^b, (a&b) << 1 );
+}
+
+
+/**
+ * Write a function that takes the binary representation of an unsigned integer and returns the number of '1' bits it has (also known as the Hamming weight).
+ * Time complexity: O(1) or O(N), N represents maximum bits that can be stored in input variable.
+ * Space complexity: O(1).
+ * @see https://leetcode.com/problems/number-of-1-bits
+ * @param n
+ * @return number of 1s
+ */
+int hammingWeight(uint32_t n) {
+    int count = 0;
+    while(n) {
+        n &= (n-1);
+        ++count;
+    }
+
+    return count;
+}
+
+
+/**
+ * Given an integer n, return an array ans of length n + 1 such that for each i (0 <= i <= n), ans[i] is the number of 1's in the binary representation of i.
+ * Time complexity: O(N).
+ * Space complexity: O(N).
+ * @see https://leetcode.com/problems/counting-bits
+ * @param n
+ * @return bit count vector
+ */
+vector<int> countBits(int n) {
+    vector<int> results(n+1);
+    results[0] = 0;
+
+    for (int i = 1; i != n+1; ++i) results[i] = results[i/2] + i%2;
+    return results;
+}
+
+
+/**
+ * Given an array nums containing n distinct numbers in the range [0, n], return the only number in the range that is missing from the array.
+ * Time complexity: O(N).
+ * Space complexity: O(1).
+ * @see https://leetcode.com/problems/missing-number
+ * @param nums
+ * @return missing number
+ */
+int missingNumber(vector<int>& nums) {
+    int idealSum = 0, actualSum = 0;
+
+    for(int i = 0; i != nums.size() + 1; ++i) {
+        idealSum += i;
+
+        if (i < nums.size()) actualSum += nums[i];
+    }
+
+    return idealSum - actualSum;
+}
+
+
+/**
+ * Reverse bits of a given 32 bits unsigned integer.
+ * Time complexity: O(1).
+ * Space complexity: O(1).
+ * @see https://leetcode.com/problems/reverse-bits
+ * @param n
+ * @return reversed number
+ */
+uint32_t reverseBits(uint32_t n) {
+    uint32_t res = 0;
+    for (int i = 0; i != 32; ++i) {
+        res = (res << 1) | ((n >> i) & 1);
+    }
+
+    return res;
+}
+
 
 int main() {
     vector<int> nums {2,7,11,15};
@@ -343,7 +443,7 @@ int main() {
     vector threeSumNums {-2,0,1,1,2};
     vector<vector<int>> resultsThreeSum = threeSum(threeSumNums);
     cout << "Three sum: ";
-    for (auto s : resultsThreeSum) {
+    for (const auto& s : resultsThreeSum) {
         cout << "< ";
         for (auto i : s) cout << i << ' ';
         cout << "> ";
@@ -351,6 +451,20 @@ int main() {
 
     vector<int> containerHeights {1,8,6,2,5,4,8,3,7};
     cout << "\nMax container area: " << maxArea(containerHeights) << '\n';
+
+    cout << "Sum of a and b using bit manipulation: " << getSum(2, 3) << '\n';
+
+    cout << "Number of 1s in input are: " << hammingWeight(0b11111111111111111111111111111101) << '\n';
+
+    cout << "Number of 1s until N are: " << "< ";
+    vector<int> bitsCount = countBits(5);
+    for (const int x : bitsCount) cout << x << ' ';
+    cout << ">\n";
+
+    vector<int> missingNumbers {9,6,4,2,3,5,7,0,1};
+    cout << "Missing number is: " << missingNumber(missingNumbers) << '\n';
+
+    cout << "Reverse pattern: " << std::bitset<32> {reverseBits(0b00000010100101000001111010011100)} << '\n';
 
     return 0;
 }

@@ -16,10 +16,23 @@ List Available here: [Leetcode Blind 75](https://leetcode.com/discuss/general-di
 9. **[3 Sum](https://leetcode.com/problems/3sum/)**
 10. **[Container With Most Water](https://leetcode.com/problems/container-with-most-water/)**
 
-# Todo
 ### Binary
 1. **[Sum of Two Integers](https://leetcode.com/problems/sum-of-two-integers/)**
 2. **[Number of 1 Bits](https://leetcode.com/problems/number-of-1-bits/)**
 3. **[Counting Bits](https://leetcode.com/problems/counting-bits/)**
 4. **[Missing Number](https://leetcode.com/problems/missing-number/)**
 5. **[Reverse Bits](https://leetcode.com/problems/reverse-bits/)**
+
+# Todo
+### Dynamic Programming
+1. **[Climbing Stairs](https://leetcode.com/problems/climbing-stairs/)**
+2. **[Coin Change](https://leetcode.com/problems/coin-change/)**
+3. **[Longest Increasing Subsequence](https://leetcode.com/problems/longest-increasing-subsequence/)**
+4. **[Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence/)**
+5. **[Word Break Problem](https://leetcode.com/problems/word-break/)**
+6. **[Combination Sum](https://leetcode.com/problems/combination-sum-iv/)**
+7. **[House Robber](https://leetcode.com/problems/house-robber/)**
+8. **[House Robber II](https://leetcode.com/problems/house-robber-ii/)**
+9. **[Decode Ways](https://leetcode.com/problems/decode-ways/)**
+10. **[Unique Paths](https://leetcode.com/problems/unique-paths/)**
+11. **[Jump Game](https://leetcode.com/problems/jump-game/)**
